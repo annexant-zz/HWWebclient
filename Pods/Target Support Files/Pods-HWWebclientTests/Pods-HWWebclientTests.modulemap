@@ -1,0 +1,6 @@
+framework module Pods_HWWebclientTests {
+  umbrella header "Pods-HWWebclientTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
