@@ -8,7 +8,8 @@ Pod::Spec.new do |spec|
   spec.author             = { "Andrey Ostroverkhiy" => "a.ostroverkhiy@mobidev.biz" }
   spec.swift_version = "5.0"
 
-  spec.source_files  = "Sources", "Classes/**/*.{h,m,swift}"
+  spec.source_files  = "HWWebclient/Sources"
+#, "Sources/**/*.{h,m,swift}"
   spec.requires_arc = true
 
   spec.dependency "Alamofire", "~> 4.8.1"
@@ -18,11 +19,6 @@ Pod::Spec.new do |spec|
 Reliable and convenient REST client, decidet for maximum economy with services descrription
 						DESC
 
-
-
-#TODO:
-spec.homepage     = "http://HWWebclient"
-spec.source       = { :git => "http://HWWebclient.git", :tag => "#{spec.version}" }
-
-
+spec.homepage     = "https://github.com/annexant-zz/HWWebclient"
+spec.source       = { :git => "https://github.com/annexant-zz/HWWebclient.git", :tag => "#{spec.version}" }
 end
