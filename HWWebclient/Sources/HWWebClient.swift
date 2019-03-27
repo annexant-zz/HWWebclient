@@ -14,7 +14,7 @@ open class HWWebClient {
 
     var config:HWWebClientConfigInfo
     
-    init(_ config:HWWebClientConfigInfo) {
+	public init(_ config:HWWebClientConfigInfo) {
         self.config = config
     }
     
