@@ -4,14 +4,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-typealias HWWSuccsessBlock = (_ object:Any?) ->Void
 
-typealias HWWSuccsessHandler<T> = (_ object:T?) ->Void
-typealias HWWSuccsessHandlerUnwrapped<T> = (_ object:T) ->Void
-typealias HWWFailureHandler = (_ error:HWWebClientError) ->Void
+public class HWWebClient {
 
-class HWWebClient {
-    
+	public typealias HWWSuccsessBlock = (_ object:Any?) ->Void
+	public typealias HWWSuccsessHandler<T> = (_ object:T?) ->Void
+	public typealias HWWSuccsessHandlerUnwrapped<T> = (_ object:T) ->Void
+	public typealias HWWFailureHandler = (_ error:HWWebClientError) ->Void
+
     var config:HWWebClientConfigInfo
     
     init(_ config:HWWebClientConfigInfo) {

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "HWWebclient"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.platform     = :ios, "10.0"
   spec.summary      = "REST client"
   spec.license      = { :type => "MIT", :file => "LICENSE" }

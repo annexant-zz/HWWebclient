@@ -3,7 +3,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-extension HWWebClient {
+public extension HWWebClient {
 	
 	func jsonFromObject(_ object:Any?, path:[JSONSubscriptType]? = nil) -> JSON? {
 		

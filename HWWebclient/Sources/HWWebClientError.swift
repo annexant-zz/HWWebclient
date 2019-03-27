@@ -1,7 +1,7 @@
 
 import Foundation
 
-enum HWWebClientError:Error {
+public enum HWWebClientError:Error {
 	case parsing
 	case unknown
 	case alamofire(Error)

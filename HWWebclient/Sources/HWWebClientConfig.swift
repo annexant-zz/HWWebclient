@@ -4,7 +4,7 @@ import Alamofire
 import SwiftyJSON
 
 fileprivate typealias SELF = HWWebClientConfigInfo
-class HWWebClientConfigInfo {
+public class HWWebClientConfigInfo {
     //MARK: Config
 
 	class Config {
