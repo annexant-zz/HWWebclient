@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import HWWebclient
 
 class HWWebclientTests: XCTestCase {
@@ -19,14 +20,10 @@ class HWWebclientTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-	func testTest() {
-		print("✅")
-	}
-
     func testGet() {
 
-
 		class TestConfig: HWWebClientConfigInfo {}
+
 		class TestModel: Codable {
 			let id, userId: Int
 			let title: String
@@ -34,7 +31,7 @@ class HWWebclientTests: XCTestCase {
 		}
 
 		class TestServiceProvider {
-			let url = "https://jsщnplaceholder.typicode.com/todos/1"
+			let url = "https://jsonplaceholder.typicode.com/todos/1"
 			let wc = HWWebClient(TestConfig())
 
 			func testService(onSuccess: @escaping ((TestModel)->Void),
@@ -46,13 +43,14 @@ class HWWebclientTests: XCTestCase {
 														successHandler: onSuccess,
 														failureHandler: onError)
 				}, failure: onError)
-
 			}
 		}
 
-
+		let expectation = XCTestExpectation(description: "Download Testmodel")
 
 		TestServiceProvider().testService(onSuccess: { (model) in
+
+			XCTAssertNotNil(model, "No data was downloaded.")
 
 			let isSuccess = model.id == 1
 				&& model.userId == 1
@@ -61,10 +59,12 @@ class HWWebclientTests: XCTestCase {
 
 			print(isSuccess ? "✅" : "❌")
 			XCTAssert(isSuccess, "Failed to load test model")
+			expectation.fulfill()
 		}) { (error) in
 			print("❌: \(error)")
 			XCTAssert(false, "Failed to load test model with error: \(error)")
 		}
+		wait(for: [expectation], timeout: 20.0)
     }
 
     func testPerformanceExample() {

@@ -8,7 +8,9 @@ target 'HWWebclient' do
 
   target 'HWWebclientTests' do
     inherit! :search_paths
-    # Pods for testing
+# Pods for testing: !!! Does not inherited from parent target! Have to be copypasted !!!
+	  pod 'Alamofire', '~> 4.8.1'
+	  pod 'SwiftyJSON', '~> 4.2.0'
   end
 
 end
