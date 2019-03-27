@@ -33,15 +33,12 @@ public enum HWWebClientError:Error {
         default:
             return ("Unknown Error", "Unexpected error occured")
         }
-
     }
-
-    func description() -> String {
-        return alertInfo().text
-    }
-
-	var localizedDescription: String {
-		return description()
-	}
 }
 
+extension HWWebClientError: LocalizedError {
+	public var errorDescription: String? {
+		let ai = self.alertInfo()
+		return "\(ai.title): \(ai.text)"
+	}
+}

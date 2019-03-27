@@ -5,7 +5,7 @@ import Alamofire
 import SwiftyJSON
 
 
-public class HWWebClient {
+open class HWWebClient {
 
 	public typealias HWWSuccsessBlock = (_ object:Any?) ->Void
 	public typealias HWWSuccsessHandler<T> = (_ object:T?) ->Void

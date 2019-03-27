@@ -55,7 +55,7 @@ public extension HWWebClient {
     }
     
     func handleError(_ incomingError:HWWebClientError, handler:HWWFailureHandler?) {
-        self.config.printDebugError("handleError:" + incomingError.description())
+        self.config.printDebugError("handleError:" + incomingError.localizedDescription)
         let h = handler ?? {_ in self.config.defaultErrorHandler(incomingError)}
         h(incomingError)
     }
