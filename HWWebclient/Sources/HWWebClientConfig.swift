@@ -7,29 +7,32 @@ fileprivate typealias SELF = HWWebClientConfigInfo
 open class HWWebClientConfigInfo {
     //MARK: Config
 
-	class Config {
-		var printDebugInfo: Bool = true
-		var printDebugError: Bool = true
-		var basicAuthLogin: String = ""
-		var basicAuthPassword: String = ""
-		var debugPrefix = "HWWC:"
-		static var defaultHeaders: HTTPHeaders = ["Accept":" application/json","Content-Type":"application/json"]
+	public class Config {
+		public static let defaultHeaders: HTTPHeaders = ["Accept":" application/json","Content-Type":"application/json"]
+
+		public var printDebugInfo: Bool = true
+		public var printDebugError: Bool = true
+		public var basicAuthLogin: String = ""
+		public var basicAuthPassword: String = ""
+		public var debugPrefix = "HWWC:"
 	}
 
 
-	var config = Config()
+	public var config = Config()
+	public var headers: HTTPHeaders = Config.defaultHeaders
 
-	var headers: HTTPHeaders = Config.defaultHeaders
+	public init() {
+	}
 
-	func setHeader(_ key: String, value: String? = nil) {
+	public func setHeader(_ key: String, value: String? = nil) {
 		headers[key] = value
 	}
 
-	func customizeRequest(_ request:DataRequest) {
+	public func customizeRequest(_ request:DataRequest) {
         request.validate(statusCode: 200..<300)
     }
     
-    func defaultErrorHandler(_ error:HWWebClientError) {
+    public func defaultErrorHandler(_ error:HWWebClientError) {
         //TODO: At least hiding of a HUD should be made here as well.
 		DispatchQueue.main.async {
 			if let vc = UIApplication.shared.keyWindow?.rootViewController {
@@ -44,12 +47,12 @@ open class HWWebClientConfigInfo {
 		}
     }
     
-    func errorFromData(_ data:JSON) -> HWWebClientError? {
+    public func errorFromData(_ data:JSON) -> HWWebClientError? {
         printDebugInfo(":errorFromResponse:Not customized, always returns nil (no error)")
         return nil
     }
     
-    func errorFromResponse(_ response:DataResponse<Any>, data:JSON? = nil) -> HWWebClientError? {
+    open func errorFromResponse(_ response:DataResponse<Any>, data:JSON? = nil) -> HWWebClientError? {
 
 		if let d = data, let error = errorFromData(d) {
 			return error
@@ -62,13 +65,13 @@ open class HWWebClientConfigInfo {
         return nil
     }
     
-    func printDebugInfo(_ info:String) {
+    public func printDebugInfo(_ info:String) {
         if config.printDebugInfo {
             print(config.debugPrefix + info)
         }
     }
     
-    func printDebugError(_ info:String) {
+    public func printDebugError(_ info:String) {
         if config.printDebugError {
             print("ERROR:" + config.debugPrefix + info)
         }

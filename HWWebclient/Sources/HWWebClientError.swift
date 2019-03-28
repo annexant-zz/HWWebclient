@@ -11,7 +11,7 @@ public enum HWWebClientError:Error {
 	case internalServer
 	case noData
 
-    func alertInfo() -> (title:String, text:String) {
+    public func alertInfo() -> (title:String, text:String) {
         switch self {
         case .parsing:
             return ("Parsing Error", "Unable to parse server responce")

@@ -12,7 +12,7 @@ open class HWWebClient {
 	public typealias HWWSuccsessHandlerUnwrapped<T> = (_ object:T) ->Void
 	public typealias HWWFailureHandler = (_ error:HWWebClientError) ->Void
 
-    var config:HWWebClientConfigInfo
+    public var config:HWWebClientConfigInfo
     
 	public init(_ config:HWWebClientConfigInfo) {
         self.config = config
@@ -36,19 +36,19 @@ open class HWWebClient {
         request.responseJSON(completionHandler: completion)
     }
     
-	func post(_ path:String, parameters:Parameters?, success:@escaping HWWSuccsessBlock, failure:HWWFailureHandler?) {
+	public func post(_ path:String, parameters:Parameters?, success:@escaping HWWSuccsessBlock, failure:HWWFailureHandler?) {
 		query( .post, path: path, parameters: parameters, succsess: success, failure: failure)
 	}
 	
-	func delete(_ path:String, parameters:Parameters?, success:@escaping HWWSuccsessBlock, failure:HWWFailureHandler?) {
+	public func delete(_ path:String, parameters:Parameters?, success:@escaping HWWSuccsessBlock, failure:HWWFailureHandler?) {
 		query( .delete, path: path, parameters: parameters, succsess: success, failure: failure)
 	}
 	
-    func get(_ path:String, parameters:Parameters? = nil, success:@escaping HWWSuccsessBlock, failure:HWWFailureHandler?) {
+    public func get(_ path:String, parameters:Parameters? = nil, success:@escaping HWWSuccsessBlock, failure:HWWFailureHandler?) {
         query(.get, path: path, parameters: parameters, succsess: success, failure: failure)
     }
 	
-	func logQuery(method:HTTPMethod, path:URLConvertible, parameters:Parameters?) {
+	open func logQuery(method:HTTPMethod, path:URLConvertible, parameters:Parameters?) {
 		var s = "\n\n\(method):\(path)"
 		if let p = parameters {
 			s += "\n - PARAMS:\(p)"
