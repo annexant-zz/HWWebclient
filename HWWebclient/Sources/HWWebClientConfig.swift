@@ -73,7 +73,7 @@ open class HWWebClientConfigInfo {
     
     public func printDebugError(_ info:String) {
         if config.printDebugError {
-            print("ERROR:" + config.debugPrefix + info)
+            print(config.debugPrefix + "ERROR:" + info)
         }
     }
 }
