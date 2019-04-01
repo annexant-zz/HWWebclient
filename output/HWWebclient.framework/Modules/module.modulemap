@@ -1,0 +1,4 @@
+framework module HWWebclient {
+  header "HWWebclient-Swift.h"
+  requires objc
+}
